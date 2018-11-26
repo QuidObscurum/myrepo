@@ -1,0 +1,52 @@
+ALLOWED_HOSTS = ['bogdank111.pythonanywhere.com']
+
+http://bogdank111.pythonanywhere.com/video/
+
+install git
+git init
+git config --global user.name
+git config --global user.email
+git status
+git add --all
+git commit -m "my firs commit"
+
+register on GitHub.com
+	new repository
+		copy url
+
+git remote add orogin https://github.com/Bogdankozlovskiy/myrepo.git связали наш локал репо и гитхаб
+git push -u origin master
+
+registrer on pythonanywhere.com
+		$ bash
+			git clone https://github.com/Bogdankozlovskiy/myrepo.git
+			tree myrepo проверка
+			cd myrepo
+			virtualenv --python=python3.6 myvenv
+			source myvenv/bin/activate
+			pip install django
+
+Вернись в панель управления PythonAnywhere, нажав на лого в верхнем левом углу, затем переключись на вкладку Web и нажми кнопку Add a new web app.
+После подтверждения доменного имени выбери Manual configuration (NB: не «Django»!) в диалоговом окне. Затем выбери Python 3.6 и заверши работу мастера.
+
+/home/BogdanK111/myrepo/myvenv/
+
+
+import os
+import sys
+
+path = os.path.expanduser('~/myrepo')
+if path not in sys.path:
+    sys.path.append(path)
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'mysite.settings'
+
+from django.core.wsgi import get_wsgi_application
+from django.contrib.staticfiles.handlers import StaticFilesHandler
+application = StaticFilesHandler(get_wsgi_application())
+
+
+
+
+git push
+git pull

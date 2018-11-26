@@ -1,0 +1,25 @@
+{% extends 'main_template.html' %}
+{% load staticfiles %}
+{% block oneVideo %}
+<div> </div>
+    <iframe width="1080" height="586" src={{ video.Video_url }} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <h1> {{ video.Video_name }}</h1>
+        <h2 style="font-size: 20px"> {{ video.Video_discr }}</h2>
+        <br> Добавлено {{ video.Video_date }}</br>
+<img src="{% static 'like.png' %}" width="30"  id="like" name="{{ video.id }}" style="cursor: pointer; padding-right: 10px;" align="left"> <h3 id="count_likes">{{ video.Video_likes }} </h3>
+<!-- <a href="/games/addliketovideo/{{ video.id }}/"> {{ video.Video_likes }}<img src="{% static 'likeimg.jpg' %}" width="100" class="like"></a> -->
+<div class="comment_section" style="">
+    {% for com in comments %}
+                <br> {{ com.0.Comment_text }}
+                <br> Added {{ com.0.Comment_data }}
+<br> <!--<a href="/games/addliketocomment/{{ com.0.id }}/"> -->
+<img src="{% static 'like.png' %}" width="20" id="{{ com.0.id }}" class="likecomm" style="cursor: pointer; padding-right: 10px;"> <span id="{{ com.0.id }}count"> {{ com.0.Comment_likes }} </span>
+                <br> by {{ com.0.Comment_user }}
+            {% endfor %}
+    </div>
+<h6 style="font-size: 20px">
+    {% if user %}
+  <form action="/games/addcomment/{{ video.id }}/" method = "post"> {% csrf_token %}{{ form }} <input type="submit" class="button" value="Добавить коментарий"> </form>
+    {% endif %}
+</h6>
+{% endblock %}

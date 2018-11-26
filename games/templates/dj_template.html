@@ -1,0 +1,21 @@
+{% extends 'main_template.html' %}
+{% block dj_template %}
+{% load staticfiles %}
+
+    {% for con in content %}
+    <iframe width="560" height="315" src={{ con.0.Video_url }} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <a href="/games/showOne/{{ con.0.id }}"><h1> {{ con.0.Video_name }}</h1> </a>
+        <h2 style="font-size: 24px;"> {{ con.0.Video_discr }}</h2>
+        <h3 style="font-size: 12px;"> Добавлено {{ con.0.Video_date }}</h3>
+        <h3> <img src="{% static 'heart.png' %}" width="20"> {{ con.0.Video_likes }}</h3>
+
+            {% for com in con.1 %}
+                <br> {{ com.0.Comment_text }}
+                <br> Added {{ com.0.Comment_data }}
+                <br> <img src="{% static 'heart.png' %}" width="10"> {{ com.0.Comment_likes }}
+                <br> by {{ com.1 }}
+                <br>
+<br>
+            {% endfor %}
+    {% endfor %}
+{% endblock %}
