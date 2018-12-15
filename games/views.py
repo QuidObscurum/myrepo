@@ -8,6 +8,8 @@ from django.contrib.auth import get_user_model, login, logout
 
 User = get_user_model()
 
+def redirect_to_valid_url(request):
+    return redirect("/games/all/")
 
 def show(request):
     content = []

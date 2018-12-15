@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import re_path, include
-
+from games import views
 urlpatterns = [
     re_path('admin/', admin.site.urls),
-    re_path('games/', include('games.urls_games'))
+    re_path('games/', include('games.urls_games')),
+    re_path('^$', views.redirect_to_valid_url),
 ]
