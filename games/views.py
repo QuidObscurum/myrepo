@@ -18,12 +18,18 @@ def show(request):
         tmp.append(v)
         comments = Comment.objects.filter(Comment_video_id=v.id)
         l_users = []
+        l_comment_likes = []
         for com in comments:
+            comment_likes_len = len(com.Comment_likers.all())
+            l_comment_likes.append(comment_likes_len)
             l_users.append(User.objects.get(id=com.Comment_user_id))
-        tmp.append(list(zip(comments, l_users)))
+        tmp.append(list(zip(comments, l_users, l_comment_likes)))
 
         content.append(tmp)
-
+    # <content>[
+    #   <tmp>[
+    #       Video, <comms>[
+    #           (Comment, User),(Comment, User)...]]]
     return render(request, 'dj_template.html', {'content': content, 'user': auth.get_user(request).username})
     # return render(request, 'dj_template.html', {'name': 'Diana'})
     # return HttpResponse('Hello')
@@ -38,9 +44,12 @@ def showOneVideo(request, video_id):
     kargs['user'] = auth.get_user(request).username
     comments = Comment.objects.filter(Comment_video_id=video_id)
     Users_list = []
+    l_comment_likes = []
     for com in comments:
+        comment_likes_len = len(com.Comment_likers.all())
+        l_comment_likes.append(comment_likes_len)
         Users_list.append(User.objects.get(id=com.Comment_user_id))
-    kargs['comments'] = list(zip(comments, Users_list))
+    kargs['comments'] = list(zip(comments, Users_list, l_comment_likes))
     return render(request, 'oneVideo.html', kargs)
 
 
@@ -132,8 +141,10 @@ def ajaxcomm(request):
     if request.GET:
         comment_id = request.GET['addlike']
         comment = Comment.objects.get(id=comment_id)
-        comment.Comment_likes += 1
+        # comment.Comment_likes += 1
+        liker = User.objects.get(id=request.user.id)
+        comment.Comment_likers.add(liker)
         comment.save()
-    return HttpResponse(comment.Comment_likes)
+    return HttpResponse(len(comment.Comment_likers.all()))
 
 # Create your views here.

@@ -13,7 +13,7 @@
                 <br> {{ com.0.Comment_text }}
                 <br> Added {{ com.0.Comment_data }}
 <br> <!--<a href="/games/addliketocomment/{{ com.0.id }}/"> -->
-<img src="{% static 'like.png' %}" width="20" id="{{ com.0.id }}" class="likecomm" style="cursor: pointer; padding-right: 10px;"> <span id="{{ com.0.id }}count"> {{ com.0.Comment_likes }} </span>
+<img src="{% static 'like.png' %}" width="20" id="{{ com.0.id }}" class="likecomm" style="cursor: pointer; padding-right: 10px;"> <span id="{{ com.0.id }}count"> {{ com.2 }} </span>
                 <br> by {{ com.0.Comment_user }}
             {% endfor %}
     </div>
