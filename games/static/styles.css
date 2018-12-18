@@ -1,0 +1,68 @@
+.flex-container-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.flex-container-col > div {
+  width: 970px;
+  padding: 5px 15px;
+}
+
+.flex-container-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.flex-container-row > div {
+  padding: 5px 15px;
+}
+
+.sheet {
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url(Death_Stranding.png);
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.carpet {
+    background-color: #f1f1f1;
+    min-width: 970px;
+}
+
+h3 {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+h2 {
+    font-weight: normal;
+    font-size: 24px;
+}
+
+h1 {
+    font-size: 26px;
+}
+
+h4 {
+    font-size: 14px;
+}
+
+h6 {
+    font-size: 16px;
+}
+
+/*.grid-container {
+    display: grid;
+}
+
+.right {
+  grid-area: right;
+}*/

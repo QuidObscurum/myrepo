@@ -3,19 +3,19 @@
 {% load staticfiles %}
 
     {% for con in content %}
-    <iframe width="720" height="315" src={{ con.0.Video_url }} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    <a href="/games/showOne/{{ con.0.id }}"><h1> {{ con.0.Video_name }}</h1> </a>
-        <h2 style="font-size: 24px;"> {{ con.0.Video_discr }}</h2>
-        <h3 style="font-size: 12px;"> Добавлено {{ con.0.Video_date }}</h3>
-        <h3> <img src="{% static 'heart.png' %}" width="20"> {{ con.0.Video_likes }}</h3>
-
+<div>
+    <iframe style="width: 100%; min-height: 56%; padding: 10px 50px;" width="800" height="450" src={{ con.0.0.Video_url }} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <a href="/games/showOne/{{ con.0.0.id }}"><h1 style="margin: 0px 0px 5px 0px; padding: 0px 50px"> {{ con.0.0.Video_name }}</h1> </a>
+        <!-- <h2> {{ con.0.0.Video_discr }}</h2> -->
+        <p style="margin: 0px 0px; padding: 0px 50px"><b style="margin-right:15px;"><img src="{% static 'heart.png' %}" width="20"> {{ con.0.1 }}</b>Добавлено {{ con.0.0.Video_date }}</p>
+</div>
+<div style="color: #777;background-color:white;text-align:center;text-align: justify; margin:0px;">
             {% for com in con.1 %}
-                <br> {{ com.0.Comment_text }}
+                 <p style="border-left: 1px solid #c4c4c4; padding:0px 5px;">{{ com.0.Comment_text }}
                 <br> Added {{ com.0.Comment_data }}
                 <br> <img src="{% static 'heart.png' %}" width="10"> {{ com.2 }}
                 <br> by {{ com.1 }}
-                <br>
-<br>
-            {% endfor %}
+        </p>
+            {% endfor %}</div>
     {% endfor %}
 {% endblock %}
