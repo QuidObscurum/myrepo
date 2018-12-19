@@ -25,7 +25,7 @@ SECRET_KEY = 'ed1qpfl)m19lc(*^sjz(ay*kwzi)!@nb$3bq7i*a&ii(jnanhi'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['Quiddo.pythonanywhere.com']
 
 
 # Application definition
