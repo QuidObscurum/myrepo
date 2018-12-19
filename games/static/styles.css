@@ -10,7 +10,7 @@ html, body {
 }
 
 .flex-container-col > div {
-  width: 970px;
+  max-width: 970px; /*was just width*/
   padding: 5px 15px;
 }
 
@@ -42,7 +42,7 @@ html, body {
     display: flex;
     flex-direction: column;
     background-color: #f1f1f1;
-    min-width: 970px;
+    max-width: 970px; /*was min-*/
     flex-grow: 1;
 }
 
@@ -83,3 +83,5 @@ h6 {
 .right {
   grid-area: right;
 }*/
+
+/* Turn off parallax scrolling for tablets and phones. Increase the pixels if needed */
